@@ -1,3 +1,7 @@
+# Bible translations, files
+BibleDir/*
+tmp/*
+
 # Prerequisites
 *.d
 
