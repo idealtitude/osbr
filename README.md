@@ -1,3 +1,5 @@
+![logo osbr](https://stephane.life/projects/osbr/icon/osbr-256x256.png)
+
 # osbr
 
 ### Open Source Bible Reader
