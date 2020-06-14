@@ -1,5 +1,6 @@
 #include <iostream>
 #include <fstream>
+#include <regex>
 #include <string>
 #include <map>
 #include <filesystem>
@@ -43,12 +44,23 @@ void BibleFiles::get_books_list()
     if (blist.is_open())
     {
         std::string line;
-        int i = 0;
+        int i = 1;
 
         while (std::getline(blist, line))
         {
-            books_list[i] = line;
-            i++;
+            std::regex book_ptn("^([0-9]{1,2})\\s\\|\\s(.+)\\s\\|\\s([a-z0-9]+)\\s\\|\\s([0-9]+)\\s?$");
+            std::smatch m;
+
+            if (std::regex_search(line, m, book_ptn))
+            {
+                std::string t = m.str(4);
+                int x = std::stoi(t);
+
+                books_list[i].book_name = m.str(2);
+                books_list[i].book_abr = m.str(3);
+                books_list[i].chapters = x;
+                i++;
+            }
         }
 
         blist.close();

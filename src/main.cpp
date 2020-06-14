@@ -15,12 +15,12 @@ int main(int argc, char **argv)
 
         bfiles.get_books_list();
 
-        std::map<int, std::string>::iterator it;
+        //std::map<int, std::string>::iterator it;
 
-        for (it = bfiles.books_list.begin(); it != bfiles.books_list.end(); ++it)
+        for (auto const& x : bfiles.books_list)
         {
-            std::cout << "Livre " << it->first << std::endl;
-            std::cout << "Entrée: " << it->second << "\n" << std::endl;
+            //std::cout << "Livre " << it->first << ": " << it->second.book_name << std::endl;
+            std::cout << x.first << " " << x.second.book_name << " " << x.second.book_abr << " " << x.second.chapters << std::endl;
         }
     }
     else if (argc == 2)

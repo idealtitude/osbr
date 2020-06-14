@@ -29,8 +29,16 @@ class BibleFiles
     // Path to selected Bible book
     std::string book_name_path;
 
+    // Struct books list data
+    struct books_data
+    {
+        std::string book_name;
+        std::string book_abr;
+        int chapters;
+    };
+
     // Bible bboks books_list
-    std::map<int, std::string> books_list;
+    std::map<int, books_data> books_list;
 
     // Get Bible books list
     void get_books_list();
