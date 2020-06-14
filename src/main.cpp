@@ -1,4 +1,5 @@
 #include <iostream>
+#include <map>
 #include <string>
 
 #include "../inc/biblib.h"
@@ -10,7 +11,17 @@ int main(int argc, char **argv)
     {
         //Bible bible;
         std::cout << "Affichage du menu..." << std::endl;
-        //BibleFiles bfiles
+        BibleFiles bfiles;
+
+        bfiles.get_books_list();
+
+        std::map<int, std::string>::iterator it;
+
+        for (it = bfiles.books_list.begin(); it != bfiles.books_list.end(); ++it)
+        {
+            std::cout << "Livre " << it->first << std::endl;
+            std::cout << "Entrée: " << it->second << "\n" << std::endl;
+        }
     }
     else if (argc == 2)
     {
@@ -50,11 +61,14 @@ int main(int argc, char **argv)
             }
         }
     }
+    else if (argc == 4)
+    {
+        std::cout << "Affichage de l'aide... (wrong number of args)" << std::endl;
+    }
     else if (argc == 5)
     {
         std::string arg1 = argv[1];
         std::string arg2 = argv[2];
-
         std::string arg3 = argv[3];
         std::string arg4 = argv[4];
 

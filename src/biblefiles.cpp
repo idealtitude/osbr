@@ -1,39 +1,62 @@
 #include <iostream>
+#include <fstream>
 #include <string>
+#include <map>
 #include <filesystem>
 
 #include "../inc/biblefiles.h"
 
 BibleFiles::BibleFiles()
 {
-    const std::string pwd = std::filesystem::current_path();
-
-    std::string books_menu = "books.txt";
-
-    const std::string books_file_path = pwd + "/" + books_menu;
+    set_basic_vars();
 }
 
 BibleFiles::BibleFiles(std::string fname)
 {
-    const std::string pwd = std::filesystem::current_path();
-
-    std::string books_menu = "books.txt";
-
-    const std::string books_file_path = pwd + "/" + books_menu;
+    set_basic_vars();
 
     // Default Bible version is "Bible à la Colombe" (COL)
-    std::string book_name__path = pwd + "/BibleDir/COL/" + fname;
+    std::string book_name_path = vpaths.pwd + "/BibleDir/COL/" + fname;
 }
 
 BibleFiles::BibleFiles(std::string fname, std::string bversion)
 {
-    const std::string pwd = std::filesystem::current_path();
+    set_basic_vars();
 
-    std::string books_menu = "books.txt";
+    // Version defined by user
+    std::string book_name_path = vpaths.pwd + "/BibleDir/" + bversion + "/" + fname;
+}
 
-    const std::string books_file_path = pwd + "/" + books_menu;
+void BibleFiles::set_basic_vars()
+{
+    std::string p = std::filesystem::current_path();
+    std::string tmp = p + "/data/books.txt";
 
-    std::string book_name__path = pwd + "/BibleDir/" + bversion + "/" + fname;
+    vpaths.pwd = p;
+    vpaths.books_file_path = tmp;
+}
+
+void BibleFiles::get_books_list()
+{
+    std::ifstream blist(vpaths.books_file_path);
+
+    if (blist.is_open())
+    {
+        std::string line;
+        int i = 0;
+
+        while (std::getline(blist, line))
+        {
+            books_list[i] = line;
+            i++;
+        }
+
+        blist.close();
+    }
+    else
+    {
+        std::cout << "Impossible d'ouvrir " << vpaths.books_file_path << std::endl;
+    }
 }
 
 BibleFiles::~BibleFiles(){}

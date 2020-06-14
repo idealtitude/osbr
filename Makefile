@@ -1,5 +1,6 @@
 CXX=g++
-CXXFLAGS=-std=c++17 -g -Wall -Werror -pedantic -lstdc++fs
+CXXFLAGS=-std=c++17 -g -Wall -Werror -pedantic
+LDFLAGS=-lstdc++fs
 
 ifeq ($(release), true)
 	CXXFLAGS=-std=c++17 -lstdc++fs
@@ -13,7 +14,7 @@ obj=$(src:.cpp=.o)
 	$(LINK.cpp) -o $@ $^
 
 osbr: $(obj)
-	$(CXX) -o $@ $^ $(CXXFLAGS)
+	$(CXX) -o $@ $^ $(LDFLAGS)
 
 clean:
 	$(RM) *~ *.o

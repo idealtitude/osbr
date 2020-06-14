@@ -17,14 +17,26 @@ class BibleFiles
     // Destructor
     ~BibleFiles();
 
-    // Working DIR
-    const std::string pwd;
+    struct var_paths
+    {
+        // Working DIR
+        std::string pwd;
 
-    // Books menu file path
-    const std::string books_file_path;
+        // Books menu file path
+        std::string books_file_path;
+    } vpaths;
 
     // Path to selected Bible book
     std::string book_name_path;
+
+    // Bible bboks books_list
+    std::map<int, std::string> books_list;
+
+    // Get Bible books list
+    void get_books_list();
+
+  private:
+    void set_basic_vars();
 };
 
 #endif
