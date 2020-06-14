@@ -2,7 +2,7 @@
 #include <regex>
 #include <string>
 
-#include "biblib.h"
+#include "../inc/biblib.h"
 
 Bible::Bible()
 {
@@ -34,25 +34,25 @@ bool Bible::check_ref_format()
     if (std::regex_search(ref, m, ref_ptn))
     {
         sref.book = m.str(1);
+        std::string tmp_chapter = m.str(2);
+        std::string tmp_verse = m.str(3);
 
-        if (sref.chapter.length() > 0)
+        if (tmp_chapter.length() > 0)
         {
-            std::string tmp_chapter = m.str(2);
             sref.chapter = tmp_chapter.erase(0, 1);
         }
         else
         {
-            sref.chapter = "0";
+            sref.chapter = "nil";
         }
 
-        if (sref.chapter.length() > 0)
+        if (tmp_verse.length() > 0)
         {
-            std::string tmp_verse = m.str(3);
             sref.verse = tmp_verse.erase(0, 1);
         }
         else
         {
-            sref.verse = "0";
+            sref.verse = "nil";
         }
 
         return true;

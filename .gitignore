@@ -1,5 +1,6 @@
 # Bible translations, files
-BibleDir/*
+data/BibleDir/*
+!data/
 tmp/*
 
 # Prerequisites
@@ -34,4 +35,4 @@ tmp/*
 *.exe
 *.out
 *.app
-bible
+osbr

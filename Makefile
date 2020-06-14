@@ -5,21 +5,21 @@ ifeq ($(release), true)
 	CXXFLAGS=-std=c++17 -lstdc++fs
 endif
 
-src=main.cpp biblefiles.cpp biblib.cpp
-inc=biblefiles.h biblib.h
+src=src/main.cpp src/biblefiles.cpp src/biblib.cpp
+inc=inc/biblefiles.h inc/biblib.h
 obj=$(src:.cpp=.o)
 
 %: %.o
 	$(LINK.cpp) -o $@ $^
 
-bible: $(obj)
-	$(CXX) -o $@ $^
+osbr: $(obj)
+	$(CXX) -o $@ $^ $(CXXFLAGS)
 
 clean:
 	$(RM) *~ *.o
 
 mrproper: clean
-	$(RM) bible
+	$(RM) osbr
 
 depend:
 	makedepend $(src)
