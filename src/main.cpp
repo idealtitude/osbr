@@ -9,24 +9,32 @@ int main(int argc, char **argv)
 {
     if (argc == 1)
     {
-        //Bible bible;
         std::cout << "Affichage du menu..." << std::endl;
         BibleFiles bfiles;
 
         bfiles.get_books_list();
 
-        //std::map<int, std::string>::iterator it;
-
         for (auto const& x : bfiles.books_list)
         {
-            //std::cout << "Livre " << it->first << ": " << it->second.book_name << std::endl;
             std::cout << x.first << " " << x.second.book_name << " " << x.second.book_abr << " " << x.second.chapters << std::endl;
         }
     }
     else if (argc == 2)
     {
-        std::cout << "Affichage de l'aide..." << std::endl;
-        std::cout << "... ou affichage de la version de osbr..." << std::endl;
+        std::string arg = argv[1];
+
+        if (arg == "-h" || arg == "--help")
+        {
+            std::cout << "Affichage de l'aide..." << std::endl;
+        }
+        else if (arg == "-v" || arg == "--version")
+        {
+            std::cout << "osbr 0.1" << std::endl;
+        }
+        else
+        {
+            std::cout << "Argument inconnu, affichage de l'aide..." << std::endl;
+        }
     }
     else if (argc == 3)
     {
@@ -111,6 +119,10 @@ int main(int argc, char **argv)
                 std::cout << "Référence \"" << arg2 << "\" non valide..." << std::endl;
             }
         }
+    }
+    else
+    {
+        std::cout << "Trop d'arguments... Affichage de l'aide" << std::endl;
     }
 
     return 0;
