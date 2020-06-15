@@ -6,8 +6,8 @@ ifeq ($(release), true)
 	CXXFLAGS=-std=c++17 -lstdc++fs
 endif
 
-src=src/main.cpp src/biblefiles.cpp src/biblib.cpp
-inc=inc/biblefiles.h inc/biblib.h
+src=src/main.cpp src/biblefiles.cpp src/biblib.cpp src/biblemenu.cpp
+inc=inc/biblefiles.h inc/biblib.h inc/biblemenu.h
 obj=$(src:.cpp=.o)
 
 %: %.o
