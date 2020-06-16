@@ -1,7 +1,7 @@
 # Bible translations, files
 data/Bible/*
 !data/
-!data/Bible/
+!data/Bible/README.md
 tmp/*
 
 bin/debug/*
