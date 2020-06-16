@@ -2,25 +2,29 @@ CXX=g++
 CXXFLAGS=-std=c++17 -g -Wall -Werror -pedantic
 LDFLAGS=-lstdc++fs
 
+dest=bin/debug/
+
 ifeq ($(release), true)
-	CXXFLAGS=-std=c++17 -lstdc++fs
+	CXXFLAGS=-std=c++17
+	dest=bin/release/
 endif
 
-src=src/main.cpp src/biblefiles.cpp src/biblib.cpp src/biblemenu.cpp
-inc=inc/biblefiles.h inc/biblib.h inc/biblemenu.h
+srco=src/
+src=src/main.cpp 
+inc=
 obj=$(src:.cpp=.o)
 
 %: %.o
 	$(LINK.cpp) -o $@ $^
 
 osbr: $(obj)
-	$(CXX) -o $@ $^ $(LDFLAGS)
+	$(CXX) -o $(dest)$@ $^ $(LDFLAGS)
 
 clean:
-	$(RM) *~ *.o
+	$(RM) *~ $(srco)*.o
 
 mrproper: clean
-	$(RM) osbr
+	$(RM) $(dest)osbr
 
 depend:
 	makedepend $(src)
