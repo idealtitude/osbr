@@ -4,6 +4,9 @@ data/Bible/*
 !data/Bible/
 tmp/*
 
+bin/debug/*
+bin/release/*
+
 # Prerequisites
 *.d
 
