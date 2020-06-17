@@ -3,6 +3,7 @@ data/Bible/*
 !data/
 !data/Bible/README.md
 tmp/*
+osbr_dev.code-workspace
 
 bin/debug/*
 bin/release/*

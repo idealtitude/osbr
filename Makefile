@@ -10,8 +10,8 @@ ifeq ($(release), true)
 endif
 
 srco=src/
-src=src/main.cpp 
-inc=
+src=src/main.cpp appinit.cpp filereader.cpp
+inc=inc/appinit.h inc/filereader.h
 obj=$(src:.cpp=.o)
 
 %: %.o
