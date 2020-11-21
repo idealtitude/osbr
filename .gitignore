@@ -1,7 +1,7 @@
 # Bible translations, files
-data/Bible/*
-!data/
-!data/Bible/README.md
+data/bible/*
+!data/bible
+!data/books.txt
 tmp/*
 osbr_dev.code-workspace
 
