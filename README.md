@@ -26,4 +26,5 @@ To use the program you'll need the folder containing the text files of the Bible
 
  [https://stephane.life/projects/osbr/](https://stephane.life/projects/osbr/)
 
-That's all for the moment...
+That's all for the moment... If you any idea, suggestion, feel free to
+contact me (any help apreciated btw!).
